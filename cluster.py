@@ -4,17 +4,15 @@ from math import sqrt
 
 WIDTH=1000
 HEIGHT=1000
-COLOURS=[
-    (255, 127, 39),
-    (34, 177, 76),
-    (0, 162, 232),
-    (163, 73, 164),
-    (255, 242, 0),
-    (63, 72, 204),
-]
+BORDER=25
 
 def generate_points(n=100):
-    return [(int(random.random()*WIDTH), int(random.random()*HEIGHT)) for i in range(n)]
+    return [(int(random.random()*WIDTH) + BORDER, int(random.random()*HEIGHT) + BORDER) for i in range(n)]
+
+def create_image():
+    img = Image.new('RGB', (WIDTH + BORDER*2, HEIGHT+ BORDER*2), (255, 255, 255))
+    draw = ImageDraw.Draw(img)
+    return img, draw
 
 def draw_point(draw, point, size, fill):
     draw.rectangle((point[0]-size, point[1]-size, point[0]+size, point[1]+size),

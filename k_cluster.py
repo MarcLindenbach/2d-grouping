@@ -1,8 +1,17 @@
 from cluster import *
 
-def k_cluster(points, k=5, distance=p_distance):
+COLOURS=[
+    (255, 127, 39),
+    (34, 177, 76),
+    (0, 162, 232),
+    (163, 73, 164),
+    (255, 242, 0),
+    (63, 72, 204),
+]
+
+def k_cluster(points, k=6, distance=p_distance):
     "K-Means Clustering of 2D Data"
-    render_k(points, file_name='iteration-0.jpeg')
+    render_k(points, file_name='k-iteration-0.jpeg')
     clusters = generate_points(n=k)
     last_matches = None
     for iter in range(1, 100):
@@ -29,7 +38,7 @@ def k_cluster(points, k=5, distance=p_distance):
             avgs[0] /= len(best_matches[i])
             avgs[1] /= len(best_matches[i])
             clusters[i] = avgs
-		
+
 def render_k(points, clusters=None, best_matches=None, file_name='cluster.jpeg'):
     img = Image.new('RGB', (WIDTH, HEIGHT), (255, 255, 255))
     draw = ImageDraw.Draw(img)
@@ -51,7 +60,3 @@ def render_k(points, clusters=None, best_matches=None, file_name='cluster.jpeg')
         draw_point(draw, point, 4, (237,28,36))
 
     img.save(file_name)
-	
-def demo():
-    points = generate_points()
-    k_cluster(points)
