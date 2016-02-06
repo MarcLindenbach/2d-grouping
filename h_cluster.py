@@ -3,7 +3,7 @@ from cluster import *
 COLORS = {
     'new-cluster': (0, 255, 0),
     'old-cluster': (0, 0, 255),
-    'point':(237 ,28 ,36)
+    'point': POINT_COLOR
 }
 
 class BiCluster():
@@ -66,7 +66,7 @@ def draw_cluster(draw, cluster, fill=None):
         draw_boundary(draw, cluster, fill)
     else:
         if not fill: fill = COLORS['point']
-        draw_point(draw, cluster.pos, 4, fill)
+        draw_point(draw, cluster.pos, fill)
 
 def draw_boundary(draw, cluster, fill, offset=6):
     points = get_points(cluster)

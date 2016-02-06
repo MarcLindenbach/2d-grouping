@@ -9,6 +9,7 @@ COLOURS=[
     (255, 242, 0),
     (63, 72, 204),
 ]
+CLUSTER_POINT_SIZE=8
 
 def k_cluster(points, k=6, distance=p_distance, file_name='k-iteration-%d.jpeg'):
     render_k(points, file_name=file_name % 0)
@@ -58,9 +59,9 @@ def render_k(points, clusters=None, best_matches=None, file_name='cluster.jpeg')
 
     if clusters:
         for i in range(len(clusters)):
-            draw_point(draw, clusters[i], 8, COLOURS[i])
+            draw_point(draw, clusters[i], COLOURS[i], size=CLUSTER_POINT_SIZE)
 
     for point in points:
-        draw_point(draw, point, 4, (237,28,36))
+        draw_point(draw, point, POINT_COLOR)
 
     img.save(file_name)
