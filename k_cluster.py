@@ -28,7 +28,7 @@ def k_cluster(points, k=6, distance=p_distance):
         if last_matches == best_matches: break
         last_matches = best_matches
 
-        render_k(points, clusters=clusters, best_matches=best_matches, file_name='iteration-%d.jpeg' % iter)
+        render_k(points, clusters=clusters, best_matches=best_matches, file_name='k-iteration-%d.jpeg' % iter)
 
         for i in range(len(clusters)):
             avgs = [0.0, 0.0]

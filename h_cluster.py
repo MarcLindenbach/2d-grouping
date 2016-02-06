@@ -42,7 +42,7 @@ def h_cluster(points, distance=p_distance):
         del clusters[closest_pair[1]]
         del clusters[closest_pair[0]]
         clusters.append(new_cluster)
-        render_h(clusters, new_cluster, file_name='iteration-%d.jpeg' % iter)
+        render_h(clusters, new_cluster, file_name='h-iteration-%d.jpeg' % iter)
 
 def render_h(clusters, new_cluster, file_name='cluster.jpeg'):
     img, draw = create_image()
