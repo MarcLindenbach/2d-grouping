@@ -45,6 +45,8 @@ def h_cluster(points, distance=p_distance, file_name='h-iteration-%d.jpeg'):
         clusters.append(new_cluster)
         render_h(clusters, new_cluster, file_name=file_name % iter)
 
+    return clusters[0]
+
 def render_h(clusters, new_cluster, file_name='cluster.jpeg'):
     img, draw = create_image()
 

@@ -13,7 +13,7 @@ COLOURS=[
 def k_cluster(points, k=6, distance=p_distance, file_name='k-iteration-%d.jpeg'):
     render_k(points, file_name=file_name % 0)
     clusters = generate_points(n=k)
-    
+
     last_matches = None
     for iter in range(1, 100):
         print('iteration %d...' % iter)
@@ -39,6 +39,8 @@ def k_cluster(points, k=6, distance=p_distance, file_name='k-iteration-%d.jpeg')
             avgs[0] /= len(best_matches[i])
             avgs[1] /= len(best_matches[i])
             clusters[i] = avgs
+
+    return clusters
 
 def render_k(points, clusters=None, best_matches=None, file_name='cluster.jpeg'):
     img, draw = create_image()

@@ -5,5 +5,7 @@ Run
 <code>
 python cluster_demo.py
 </code>
-to demo code. The demo will create a set of images in the folder it was run from (h-iteration-n.jpeg and k-iteration-n.jpeg) showing h-clustering and k-clustering working
-on grouping 50 2D data-points.
+for demo. 
+
+The demo will create a set of 50 data-points and then use hierarchical clustering and k-means clustering to group the data.
+Sets of images showing the iterative process of grouping are created in the folder the demo was run from.
