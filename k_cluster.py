@@ -36,8 +36,10 @@ def k_cluster(points, k=6, distance=p_distance, file_name='k-iteration-%d.jpeg')
             for j in range(len(best_matches[i])):
                 avgs[0] += points[best_matches[i][j]][0]
                 avgs[1] += points[best_matches[i][j]][1]
-            avgs[0] /= len(best_matches[i])
-            avgs[1] /= len(best_matches[i])
+            if len(best_matches[i])>0:
+                avgs[0] /= len(best_matches[i])
+            if len(best_matches[i])>0:
+                avgs[1] /= len(best_matches[i])
             clusters[i] = avgs
 
     return clusters
