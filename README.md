@@ -9,3 +9,13 @@ for demo.
 
 The demo will create a set of 50 data-points and then use hierarchical clustering and k-means clustering to group the data.
 Sets of images showing the iterative process of grouping are created in the folder the demo was run from.
+
+###Hierarchical Clustering Example:
+<a href="https://github.com/MarcLindenbach/2d-grouping/blob/master/example/h-example.jpeg">
+  <img src="https://github.com/MarcLindenbach/2d-grouping/blob/master/example/h-example.jpeg" width="500" />
+</a>
+
+###K-Means Clustering Example:
+<a href="https://github.com/MarcLindenbach/2d-grouping/blob/master/example/k-example.jpeg">
+  <img src="https://github.com/MarcLindenbach/2d-grouping/blob/master/example/k-example.jpeg" width="500" />
+</a>
