@@ -1,5 +1,6 @@
 from cluster import *
 
+# Line colours
 COLOURS=[
     (255, 127, 39),
     (34, 177, 76),
@@ -9,13 +10,13 @@ COLOURS=[
     (63, 72, 204),
 ]
 
-def k_cluster(points, k=6, distance=p_distance):
-    "K-Means Clustering of 2D Data"
-    render_k(points, file_name='k-iteration-0.jpeg')
+def k_cluster(points, k=6, distance=p_distance, file_name='k-iteration-%d.jpeg'):
+    render_k(points, file_name=file_name % 0)
     clusters = generate_points(n=k)
+    
     last_matches = None
     for iter in range(1, 100):
-        print('iteration %d' % iter)
+        print('iteration %d...' % iter)
         best_matches = [[] for i in range(k)]
         for i in range(len(points)):
             point = points[i]
@@ -28,7 +29,7 @@ def k_cluster(points, k=6, distance=p_distance):
         if last_matches == best_matches: break
         last_matches = best_matches
 
-        render_k(points, clusters=clusters, best_matches=best_matches, file_name='k-iteration-%d.jpeg' % iter)
+        render_k(points, clusters=clusters, best_matches=best_matches, file_name=file_name % iter)
 
         for i in range(len(clusters)):
             avgs = [0.0, 0.0]

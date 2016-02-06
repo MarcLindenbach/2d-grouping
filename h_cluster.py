@@ -13,16 +13,17 @@ class BiCluster():
         self.second = second
         self.is_branch = is_branch
 
-def h_cluster(points, distance=p_distance):
+def h_cluster(points, distance=p_distance, file_name='h-iteration-%d.jpeg'):
     clusters = [BiCluster(point) for point in points]
     iter = 0
-    render_h(clusters, None, file_name='h-iteration-%d.jpeg' % iter)
+    render_h(clusters, None, file_name=file_name % iter)
 
     while len(clusters) > 1:
-        closest_pair = (0, 1)
-        closest_distance = distance(clusters[0].pos, clusters[1].pos)
         iter += 1
         print("iteration %d..." % iter)
+
+        closest_pair = (0, 1)
+        closest_distance = distance(clusters[0].pos, clusters[1].pos)
 
         for i in range(len(clusters)):
             for j in range(i+1, len(clusters)):
@@ -31,10 +32,10 @@ def h_cluster(points, distance=p_distance):
                     closest_pair = (i, j)
                     closest_distance = d
 
-        new_pos = [(clusters[closest_pair[0]].pos[0] + clusters[closest_pair[1]].pos[0]) / 2,
+        avg_pos = [(clusters[closest_pair[0]].pos[0] + clusters[closest_pair[1]].pos[0]) / 2,
                    (clusters[closest_pair[0]].pos[1] + clusters[closest_pair[1]].pos[1]) / 2]
 
-        new_cluster = BiCluster(new_pos,
+        new_cluster = BiCluster(avg_pos,
                                 first=clusters[closest_pair[0]],
                                 second=clusters[closest_pair[1]],
                                 is_branch=True)
@@ -42,7 +43,7 @@ def h_cluster(points, distance=p_distance):
         del clusters[closest_pair[1]]
         del clusters[closest_pair[0]]
         clusters.append(new_cluster)
-        render_h(clusters, new_cluster, file_name='h-iteration-%d.jpeg' % iter)
+        render_h(clusters, new_cluster, file_name=file_name % iter)
 
 def render_h(clusters, new_cluster, file_name='cluster.jpeg'):
     img, draw = create_image()
@@ -78,7 +79,6 @@ def draw_boundary(draw, cluster, fill, offset=6):
     draw.line((xmin, ymin, xmin, ymax), fill)
 
 def get_points(cluster):
-    """Return all the points in a given cluster"""
     if cluster.is_branch:
         return get_points(cluster.first) + get_points(cluster.second)
     else:
