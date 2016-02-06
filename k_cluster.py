@@ -40,8 +40,7 @@ def k_cluster(points, k=6, distance=p_distance):
             clusters[i] = avgs
 
 def render_k(points, clusters=None, best_matches=None, file_name='cluster.jpeg'):
-    img = Image.new('RGB', (WIDTH, HEIGHT), (255, 255, 255))
-    draw = ImageDraw.Draw(img)
+    img, draw = create_image()
 
     if best_matches:
         for i in range(len(best_matches)):
