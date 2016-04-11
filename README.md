@@ -1,5 +1,5 @@
 # 2D Grouping
-Hierarchical and k-means clustering for grouping 2D data-points
+Hierarchical and k-means clustering for grouping 2D data-points, based on the examples provided in <a href="http://shop.oreilly.com/product/9780596529321.do">Programming Collective Intelligence</a>
 
 Run
 <code>
